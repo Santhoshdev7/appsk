@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Person Details Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    form {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    input[type="submit"] {
+      margin-top: 15px;
+      background-color: #4CAF50;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+    .output {
+      background-color: #fff;
+      margin-top: 30px;
+      padding: 20px;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Enter Person Details</h2>
+
+  <form id="personForm">
+    <label for="name">Full Name:</label>
+    <input type="text" id="name" required />
+
+    <label for="age">Age:</label>
+    <input type="number" id="age" required />
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" required />
+
+    <label for="phone">Phone Number:</label>
+    <input type="text" id="phone" required />
+
+    <label for="gender">Gender:</label>
+    <select id="gender" required>
+      <option value="">--Select Gender--</option>
+      <option>Male</option>
+      <option>Female</option>
+      <option>Other</option>
+    </select>
+
+    <label for="address">Address:</label>
+    <textarea id="address" rows="3" required></textarea>
+
+    <input type="submit" value="Submit" />
+  </form>
+
+  <div class="output" id="output" style="display:none;">
+    <h3>Submitted Details:</h3>
+    <p><strong>Name:</strong> <span id="outName"></span></p>
+    <p><strong>Age:</strong> <span id="outAge"></span></p>
+    <p><strong>Email:</strong> <span id="outEmail"></span></p>
+    <p><strong>Phone:</strong> <span id="outPhone"></span></p>
+    <p><strong>Gender:</strong> <span id="outGender"></span></p>
+    <p><strong>Address:</strong> <span id="outAddress"></span></p>
+  </div>
+
+  <script>
+    document.getElementById("personForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // Stop page reload
+
+      // Get values
+      document.getElementById("outName").textContent = document.getElementById("name").value;
+      document.getElementById("outAge").textContent = document.getElementById("age").value;
+      document.getElementById("outEmail").textContent = document.getElementById("email").value;
+      document.getElementById("outPhone").textContent = document.getElementById("phone").value;
+      document.getElementById("outGender").textContent = document.getElementById("gender").value;
+      document.getElementById("outAddress").textContent = document.getElementById("address").value;
+
+      // Show output box
+      document.getElementById("output").style.display = "block";
+
+      // Optional: Scroll to results
+      document.getElementById("output").scrollIntoView({ behavior: "smooth" });
+    });
+  </script>
+
+</body>
+</html>
